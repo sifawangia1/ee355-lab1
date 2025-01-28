@@ -46,7 +46,14 @@ int  main (int argc, char** argv)
 
 int get_sample_num(char* in_arr){
    // determine the sample number by counting space
-   
+   int num = 0;
+   for (int i = 0; i < strlen(in_arr); i++) {
+      if (in_arr[i] == " ") {
+         num += 1;
+      }
+   }
+
+   return num;
     
     
 }
@@ -77,13 +84,29 @@ void get_samples(char* in_arr, int num_sample, double* sample){
 
 double get_mean(double* sample, int n){
    // compute the mean value of input array (sample), given its length (n)
-    
-    
+   double total;
+   for (int i = 0; i < n; i++) {
+      total += sample[i];
+   }
+
+   printf("%d", total/n);
+
+   return total/n;
+
 }
 
 double get_second_moment(double* sample1, double* sample2, double mean1, double mean2, int n){
    // compute the second moment of two input arrays (sample1 and sample2), given their mean values (mean1 and mean2) and the length (n)
-   
+   double covar = 0;
+   double var = 0;
+   for (int i = 0; i < n; i++) {
+      covar += (sample1[i] - mean1)*(sample2[i] - mean2);
+      var += (sample1[i] - mean1);
+   }
+   covar = covar/(n-1);
+   var = var/(n-1);
+
+   return covar;
     
     
 }
