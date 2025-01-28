@@ -89,7 +89,7 @@ double get_mean(double* sample, int n){
       total += sample[i];
    }
 
-   printf("%d", total/n);
+   // printf("%d", total/n);
 
    return total/n;
 
